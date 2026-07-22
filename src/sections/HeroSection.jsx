@@ -115,17 +115,13 @@ const HeroSection = () => {
             `}</style>
 
             {/* ================= HERO SECTION ================= */}
-            {/* Changed from bg-[#050914] to bg-transparent so the body color shows through for the navbar */}
             <section id="home" className="relative w-full min-h-screen bg-transparent text-gray-900 dark:text-white flex items-center justify-center overflow-hidden font-sans pt-24 md:pt-28 pb-12 scroll-mt-24 transition-colors duration-300">
 
                 {/* --- Background Elements --- */}
-                {/* Updated the background grid to support light and dark mode dots */}
                 <div className={`absolute inset-0 z-0 opacity-5 dark:opacity-10 transition-opacity duration-1000 bg-[radial-gradient(#000000_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[size:40px_40px] ${isMounted ? 'opacity-5 dark:opacity-10' : 'opacity-0'}`}></div>
                 
-                {/* Updated background glow for both themes */}
                 <div className={`absolute top-1/2 right-[15%] -translate-y-1/2 w-[600px] h-[600px] bg-blue-200 dark:bg-[#1a3673] rounded-full blur-[120px] transition-opacity duration-1000 delay-500 z-0 pointer-events-none ${isMounted ? 'opacity-40 dark:opacity-60' : 'opacity-0'}`}></div>
 
-                {/* Pulling the content higher up using -mt */}
                 <div className="container mx-auto px-6 py-8 md:py-12 mt-0 md:-mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 max-w-7xl">
 
                     {/* --- LEFT COLUMN: TEXT & ACTIONS --- */}
@@ -230,8 +226,8 @@ const HeroSection = () => {
                             <span className="text-xl font-bold text-[#38bdf8]">~</span>
                         </div>
 
-                        {/* Code Window - Remains dark as it represents an IDE IDE */}
-                        <div className={`absolute -bottom-[5%] right-[24%] md:right-[18%] lg:right-[12%] z-30 w-[340px] transition-all duration-1000 delay-[800ms] ${isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                        {/* Code Window - Hidden on mobile/tablet (hidden lg:block) so it never overlaps the stats banner */}
+                        <div className={`absolute -bottom-[5%] right-[24%] md:right-[18%] lg:right-[12%] z-30 w-[340px] hidden lg:block transition-all duration-1000 delay-[800ms] ${isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                             <div className="rounded-xl border border-gray-700 dark:border-[#1e2d4a] bg-[#0d1117] shadow-[0_20px_50px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden animate-float-smooth transition-colors duration-300">
                                 <div className="flex items-center gap-2 px-4 py-3 bg-[#0d1117] border-b border-gray-700 dark:border-[#1e2d4a]/50">
                                     <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
@@ -260,7 +256,6 @@ const HeroSection = () => {
             </section>
 
             {/* ================= STATS BANNER SECTION ================= */}
-            {/* Changed from bg-[#050914] to bg-transparent */}
             <section className="w-full bg-transparent pb-16 pt-8 relative z-20 transition-colors duration-300">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
