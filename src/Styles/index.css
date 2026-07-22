@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Default to Light Mode */
+  color-scheme: light;
+  --bg-color: #f9fafb; /* Light gray background */
+  --text-color: #111827; /* Dark gray text */
+}
+
+html.dark {
+  /* Dark Mode */
+  color-scheme: dark;
+  --bg-color: #050914; /* Your custom dark blue */
+  --text-color: #f8fafc; /* Light text */
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  /* This ensures the background fades smoothly when you click the toggle */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@layer utilities {
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 5.5s ease-in-out infinite;
+  }
+}
