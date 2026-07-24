@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaRocket } from 'react-icons/fa';
 
+// 1. IMPORT YOUR LOGO IMAGES HERE
+import googleImg from '../assets/google.png';
+import tcImg from '../assets/tc.png';
+
 const Experience = () => {
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef(null);
@@ -33,7 +37,8 @@ const Experience = () => {
             role: "Google Student Ambassador",
             company: "Google",
             duration: "March - Present",
-            logo: "google.png",
+            // 2. USE THE IMPORTED VARIABLE
+            logo: googleImg,
             description: [
                 "Evangelizing Google technologies and fostering a strong developer culture on campus.",
                 "Organizing technical workshops and hackathons for student developers.",
@@ -45,7 +50,8 @@ const Experience = () => {
             role: "Software Development Intern",
             company: "Technical Crooks",
             duration: "May - July",
-            logo: "tc.png",
+            // 2. USE THE IMPORTED VARIABLE
+            logo: tcImg,
             description: [
                 "Collaborated on building robust web applications and optimizing frontend performance.",
                 "Wrote clean, maintainable code and participated in daily stand-ups and code reviews.",

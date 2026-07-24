@@ -1,6 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
+// 1. IMPORT YOUR PROJECT IMAGES HERE
+import currencyImg from '../assets/currency.png';
+import shophubImg from '../assets/shophub.png';
+import weatherImg from '../assets/weather.png';
+import healthImg from '../assets/health.png';
+
 const resolveLink = (link) => {
     if (!link || link === '#') return link;
     return link.startsWith('http://') || link.startsWith('https://') ? link : `https://${link}`;
@@ -11,7 +17,8 @@ const projectData = [
         title: "Currency Converter",
         description: "A simple yet effective currency conversion application with a clean and intuitive user interface.",
         techStack: ["React", "JavaScript", "CSS3"],
-        image: "currency.png", 
+        // 2. USE THE IMPORTED VARIABLE
+        image: currencyImg, 
         githubLink: "https://github.com/AshrafMansoori/Currency",
         liveLink: "currencyconverter-ashraf321.vercel.app",
     },
@@ -19,7 +26,8 @@ const projectData = [
         title: "ShopHub",
         description: "A comprehensive full-stack capstone web application. Built with a robust backend architecture, seamless database integration, and deployed live on the Render platform.",
         techStack: ["React", "Node.js", "MongoDB", "Render"],
-        image: "shophub.png",
+        // 2. USE THE IMPORTED VARIABLE
+        image: shophubImg,
         githubLink: "https://github.com/AshrafMansoori/Capstone-Project_Shop_hub",
         liveLink: "https://capstone-project-shop-hub.onrender.com",
     },
@@ -27,7 +35,8 @@ const projectData = [
         title: "Weather App",
         description: "A dynamic weather application that fetches real-time weather data from an API and displays it in a user-friendly interface.",
         techStack: ["MERN Stack", "Tailwind CSS", "Git"],
-        image: "weather.png",
+        // 2. USE THE IMPORTED VARIABLE
+        image: weatherImg,
         githubLink: "https://github.com/AshrafMansoori/WeatherApp",
         liveLink: "https://weather-app-xi-ten-20.vercel.app/",
     },
@@ -35,7 +44,8 @@ const projectData = [
         title: "HealthCare Connect",
         description: "A full-stack healthcare management system that allows patients to book appointments, view medical records, and communicate with healthcare providers.",
         techStack: ["React", "JavaScript", "HTML/CSS"],
-        image: "health.png",
+        // 2. USE THE IMPORTED VARIABLE
+        image: healthImg,
         githubLink: "https://github.com/AshrafMansoori/HealthTracker",
         liveLink: "health-tracker-n1el.vercel.app",
     }
