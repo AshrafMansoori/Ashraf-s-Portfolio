@@ -5,6 +5,10 @@ import { BsDownload } from 'react-icons/bs';
 import { BiCodeAlt } from 'react-icons/bi';
 import { SiReact, SiNodedotjs, SiLeetcode, SiGmail } from 'react-icons/si';
 
+// 1. IMPORT YOUR ASSETS HERE
+import profileImg from '../assets/ashraf.png';
+import resumePdf from '../assets/Ashraful_Haq_Aamir_Resume.pdf';
+
 // --- Custom Hook/Component for Smooth Number Counting ---
 const AnimatedCounter = ({ end, duration = 2000, suffix = "+" }) => {
     const [count, setCount] = useState(0);
@@ -82,10 +86,13 @@ const HeroSection = () => {
     }, [currentText, isDeleting, phraseIndex]);
 
     const handleDownloadResume = () => {
-        const fileUrl = "/Ashraful_Haq_Aamir_Resume.pdf";
+        // 2. USE THE IMPORTED PDF VARIABLE HERE
+        const fileUrl = resumePdf; 
         const link = document.createElement("a");
         link.href = fileUrl;
-        link.download = "Ashraful_Haq_Aamir_Resume.pdf";
+        
+        // Ensure this is just the filename, not a path
+        link.download = "Ashraful_Haq_Aamir_Resume.pdf"; 
         link.target = "_blank";
         document.body.appendChild(link);
         link.click();
@@ -194,8 +201,9 @@ const HeroSection = () => {
 
                         {/* Profile Image */}
                         <div className="relative z-10 w-[320px] h-[320px] md:w-[400px] md:h-[400px] rounded-full overflow-hidden border-2 border-gray-300 dark:border-[#1e2d4a] shadow-[0_0_30px_rgba(37,99,235,0.2)] transition-colors duration-300">
+                            {/* 3. USE THE IMPORTED IMAGE VARIABLE HERE */}
                             <img
-                                src="ashraf.png"
+                                src={profileImg}
                                 alt="Ashraful Haq Aamir"
                                 className="w-full h-full object-cover object-[center_25%] scale-110 transition-transform duration-700 group-hover:scale-105"
                             />
