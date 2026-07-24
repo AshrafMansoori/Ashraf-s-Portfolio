@@ -3,6 +3,10 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { BsDownload } from 'react-icons/bs';
 import ThemeToggle from './Theme';
 
+// IMPORT YOUR RESUME HERE
+// Note: Adjust the '../assets/...' path if your folder structure is slightly different
+import resumePDF from '../assets/Ashraful_Haq_Aamir_Resume.pdf';
+
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
@@ -145,7 +149,7 @@ const Navbar = () => {
 
                             {/* ANIMATED DESKTOP RESUME BUTTON */}
                             <a 
-                                href="/Ashraful_Haq_Aamir_Resume.pdf"
+                                href={resumePDF}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={`relative overflow-hidden flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-[#38bdf8] to-[#2563eb] rounded-full text-sm font-semibold text-white group transition-all duration-200 ease-out hover:scale-105 hover:shadow-[0_0_20px_rgba(56,189,248,0.5)] active:scale-95 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2'}`}
@@ -211,7 +215,7 @@ const Navbar = () => {
                         
                         {/* ANIMATED MOBILE RESUME BUTTON */}
                         <a 
-                            href="/Ashraful_Haq_Aamir_Resume.pdf"
+                            href={resumePDF}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="relative overflow-hidden flex justify-center items-center gap-3 w-full px-4 py-3 bg-gradient-to-r from-[#38bdf8] to-[#2563eb] rounded-xl text-lg font-semibold text-white group transition-all duration-200 ease-out active:scale-95"
