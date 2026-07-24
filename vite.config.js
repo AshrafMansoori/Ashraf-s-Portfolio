@@ -19,12 +19,12 @@ export default defineConfig({
         display: 'standalone', // This is what hides the browser UI
         icons: [
           {
-            src: 'logo192.png',
+            src: 'logo.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'logo512.png',
+            src: 'logo.png',
             sizes: '512x512',
             type: 'image/png'
           }
