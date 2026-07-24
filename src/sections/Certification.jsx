@@ -6,34 +6,33 @@ const certificateData = [
         id: 1,
         title: "MERN Stack Development",
         issuer: "Microsoft & GNC",
-        image: "mern.png", 
+        image: "/mern.png", // Added the leading slash!
     },
     {
         id: 2,
         title: "Intro to Retrieval Augmented Generation",
         issuer: "IBM SkillsBuild",
-        image: "rag.png",
+        image: "/rag.png", // Added the leading slash!
     },
     {
         id: 3,
         title: "Techinertia 3.0 Hackathon",
         issuer: "Unstop",
-        image: "unstop.png",
+        image: "/unstop.png", // Added the leading slash!
     },
     {
         id: 4,
         title: "Data Science Seminar",
         issuer: "Appwars Technologies",
-        image: "appwars.png",
+        image: "/appwars.png", // Added the leading slash!
     },
     {
         id: 5,
         title: "Machine Learning using Python",
         issuer: "SkillCircle",
-        image: "skillcircle.png",
+        image: "/skillcircle.png", // Added the leading slash!
     }
 ];
-
 const Certifications = () => {
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef(null);

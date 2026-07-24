@@ -67,7 +67,7 @@ const Navbar = () => {
             window.removeEventListener('scroll', updateActiveSection);
             window.removeEventListener('resize', updateActiveSection);
         };
-    }, []);
+    }, [navLinks]);
 
     const handleNavClick = (href) => {
         const sectionId = href.replace('#', '');
@@ -147,7 +147,7 @@ const Navbar = () => {
                             <a 
                                 href="/Ashraful_Haq_Aamir_Resume.pdf"
                                 target="_blank"
-                                rel="noreferrer"
+                                rel="noopener noreferrer"
                                 className={`relative overflow-hidden flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-[#38bdf8] to-[#2563eb] rounded-full text-sm font-semibold text-white group transition-all duration-200 ease-out hover:scale-105 hover:shadow-[0_0_20px_rgba(56,189,248,0.5)] active:scale-95 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2'}`}
                                 style={{ transitionDelay: '180ms' }}
                             >
@@ -213,7 +213,7 @@ const Navbar = () => {
                         <a 
                             href="/Ashraful_Haq_Aamir_Resume.pdf"
                             target="_blank"
-                            rel="noreferrer"
+                            rel="noopener noreferrer"
                             className="relative overflow-hidden flex justify-center items-center gap-3 w-full px-4 py-3 bg-gradient-to-r from-[#38bdf8] to-[#2563eb] rounded-xl text-lg font-semibold text-white group transition-all duration-200 ease-out active:scale-95"
                         >
                             {/* Fast Shine Effect */}
