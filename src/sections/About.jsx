@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaGraduationCap, FaMapMarkerAlt, FaCode } from 'react-icons/fa';
 
+// 1. IMPORT YOUR IMAGE HERE (Make sure the spelling and capitalization match exactly)
+import profileImg from '../assets/ashraf.png';
+
 const About = () => {
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef(null);
@@ -63,12 +66,14 @@ const About = () => {
                             
                             {/* Image Container */}
                             <div className="relative h-full w-full bg-gray-100 dark:bg-[#0c162d] rounded-2xl overflow-hidden border border-gray-300 dark:border-[#1e2d4a] transition-colors duration-300">
-                                {/* REPLACE 'profile.jpg' WITH YOUR ACTUAL IMAGE NAME IN THE PUBLIC FOLDER */}
+                                
+                                {/* 2. USE THE IMPORTED VARIABLE HERE */}
                                 <img 
-                                    src="ashraf.png" 
+                                    src={profileImg} 
                                     alt="Ashraf Mansoori" 
                                     className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700"
                                 />
+                                
                                 {/* Overlay effect on hover */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#050914] via-transparent to-transparent opacity-60 transition-colors duration-300"></div>
                             </div>
