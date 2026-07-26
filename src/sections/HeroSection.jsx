@@ -85,14 +85,15 @@ const HeroSection = () => {
     }, [currentText, isDeleting, phraseIndex]);
 
     const handleDownloadResume = () => {
-        // 2. USE THE IMPORTED PDF VARIABLE HERE
-        const fileUrl = "Ashraful_Haq_Aamir.pdf"; 
+        // Pointing directly to the file in the public folder
+        const fileUrl = "/Ashraful_Haq_Aamir_Resume.pdf"; 
+        
         const link = document.createElement("a");
         link.href = fileUrl;
         
-        // Ensure this is just the filename, not a path
+        // This is the name the file will save as on the user's computer
         link.download = "Ashraful_Haq_Aamir_Resume.pdf"; 
-        link.target = "_blank";
+        
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
