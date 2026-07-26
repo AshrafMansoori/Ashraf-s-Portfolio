@@ -31,9 +31,11 @@ https://ashraf-s-portfolio-lime.vercel.app/
 
 ### Light Mode vs Dark Mode
 <p align="center">
-  <img src="https://via.placeholder.com/400x250?text=Light+Mode+Screenshot" alt="Light Mode" width="45%" />
+<img width="1915" height="907" alt="image" src="https://github.com/user-attachments/assets/a3d8d5a8-fca4-4589-a886-210ff9325ac6" />
+
   &nbsp; &nbsp; &nbsp;
-  <img src="https://via.placeholder.com/400x250?text=Dark+Mode+Screenshot" alt="Dark Mode" width="45%" />
+  <img width="1917" height="888" alt="image" src="https://github.com/user-attachments/assets/82a4ec57-fecf-49a7-bc74-5460012b28d0" />
+
 </p>
 
 ### Projects Showcase
