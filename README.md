@@ -2,13 +2,10 @@
 
 > A fully responsive, modern personal portfolio built to showcase my projects, experience, and technical skills as a software developer. 
 
-<!-- 
-  HOW TO ADD YOUR BANNER / SCREENSHOT:
-  1. Take a screenshot of your portfolio (ideally showing the dark/light mode).
-  2. Save it in your repository, for example in a folder named 'docs' or 'public'.
-  3. Replace the link below with your image path.
--->
-![Portfolio Preview](./public/portfolio-preview.png)
+##Live Link 
+https://ashraf-s-portfolio-lime.vercel.app/
+## Output
+<img width="1917" height="906" alt="Screenshot 2026-07-26 153550" src="https://github.com/user-attachments/assets/c1ee4f36-09e4-447b-afc9-d764368dab0a" />
 
 ## ✨ Features
 
