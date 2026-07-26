@@ -7,7 +7,6 @@ import { SiReact, SiNodedotjs, SiLeetcode, SiGmail } from 'react-icons/si';
 
 // 1. IMPORT YOUR ASSETS HERE
 import profileImg from '../assets/ashraf.png';
-import resumePdf from '../assets/Ashraful_Haq_Aamir_Resume.pdf';
 
 // --- Custom Hook/Component for Smooth Number Counting ---
 const AnimatedCounter = ({ end, duration = 2000, suffix = "+" }) => {
@@ -87,7 +86,7 @@ const HeroSection = () => {
 
     const handleDownloadResume = () => {
         // 2. USE THE IMPORTED PDF VARIABLE HERE
-        const fileUrl = resumePdf; 
+        const fileUrl = "Ashraful_Haq_Aamir.pdf"; 
         const link = document.createElement("a");
         link.href = fileUrl;
         
