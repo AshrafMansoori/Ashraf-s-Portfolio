@@ -1,44 +1,38 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaEye } from 'react-icons/fa';
 
-// 1. IMPORT YOUR IMAGES HERE
-// Note: Adjust the '../assets/...' path if your folder structure is slightly different
-import mernImg from '../assets/mern.png';
-import ragImg from '../assets/rag.png';
-import unstopImg from '../assets/unstop.png';
-import appwarsImg from '../assets/appwars.png';
-import skillcircleImg from '../assets/skillcircle.png';
+// Replaced local imports with direct Cloudinary links in the array below
 
 const certificateData = [
     {
         id: 1,
         title: "MERN Stack Development",
         issuer: "Microsoft & GNC",
-        image: mernImg, // Now using the imported variable
+        image: "https://res.cloudinary.com/bzd9kltc/image/upload/v1785059835/mern_qedlgr.png", // Paste your Cloudinary URL here
     },
     {
         id: 2,
         title: "Intro to Retrieval Augmented Generation",
         issuer: "IBM SkillsBuild",
-        image: ragImg, // Now using the imported variable
+        image: "https://res.cloudinary.com/bzd9kltc/image/upload/v1785059834/rag_aqyhga.png", // Paste your Cloudinary URL here
     },
     {
         id: 3,
         title: "Techinertia 3.0 Hackathon",
         issuer: "Unstop",
-        image: unstopImg, // Now using the imported variable
+        image: "https://res.cloudinary.com/bzd9kltc/image/upload/v1785059835/unstop_bpz0ek.png", // Paste your Cloudinary URL here
     },
     {
         id: 4,
         title: "Data Science Seminar",
         issuer: "Appwars Technologies",
-        image: appwarsImg, // Now using the imported variable
+        image: "https://res.cloudinary.com/bzd9kltc/image/upload/v1785059834/appwars_cdjpnv.png", // Paste your Cloudinary URL here
     },
     {
         id: 5,
         title: "Machine Learning using Python",
         issuer: "SkillCircle",
-        image: skillcircleImg, // Now using the imported variable
+        image: "https://res.cloudinary.com/bzd9kltc/image/upload/v1785059834/skillcircle_rkrwdz.png", // Paste your Cloudinary URL here
     }
 ];
 
@@ -137,7 +131,7 @@ const Certifications = () => {
                                         <a 
                                             href={cert.image} 
                                             target="_blank" 
-                                            rel="noreferrer"
+                                            rel="noopener noreferrer"
                                             className="px-5 py-2.5 bg-[#38bdf8] text-gray-900 dark:text-[#050914] rounded-full font-bold text-sm flex items-center gap-2 hover:bg-blue-600 dark:hover:bg-white hover:text-white dark:hover:text-[#050914] transition-colors duration-300 hover:scale-105 transform shadow-[0_0_15px_rgba(56,189,248,0.4)]"
                                         >
                                             <FaEye className="text-base" /> View Full

@@ -5,7 +5,7 @@ import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import currencyImg from '../assets/currency.png';
 import shophubImg from '../assets/shophub.png';
 import weatherImg from '../assets/weather.png';
-import healthImg from '../assets/health.png';
+import portfolioImg from '../assets/portfolio.png';
 
 const resolveLink = (link) => {
     if (!link || link === '#') return link;
@@ -13,6 +13,15 @@ const resolveLink = (link) => {
 };
 
 const projectData = [
+    {
+        title: "Portfolio Website",
+        description: "A personal portfolio website showcasing my projects, skills, and experience. Built with React and Tailwind CSS for a responsive and modern design.",
+        techStack: ["React", "JavaScript", "HTML/CSS"],
+        // 2. USE THE IMPORTED VARIABLE
+        image: portfolioImg,
+        githubLink: "https://github.com/AshrafMansoori/Ashraf-s-Portfolio",
+        liveLink: "https://ashraf-s-portfolio-lime.vercel.app/",
+    },
     {
         title: "Currency Converter",
         description: "A simple yet effective currency conversion application with a clean and intuitive user interface.",
@@ -39,16 +48,8 @@ const projectData = [
         image: weatherImg,
         githubLink: "https://github.com/AshrafMansoori/WeatherApp",
         liveLink: "https://weather-app-xi-ten-20.vercel.app/",
-    },
-    {
-        title: "HealthCare Connect",
-        description: "A full-stack healthcare management system that allows patients to book appointments, view medical records, and communicate with healthcare providers.",
-        techStack: ["React", "JavaScript", "HTML/CSS"],
-        // 2. USE THE IMPORTED VARIABLE
-        image: healthImg,
-        githubLink: "https://github.com/AshrafMansoori/HealthTracker",
-        liveLink: "health-tracker-n1el.vercel.app",
     }
+    
 ];
 
 const Projects = () => {
