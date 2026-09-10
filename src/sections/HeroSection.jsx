@@ -86,7 +86,7 @@ const HeroSection = () => {
 
     const handleDownloadResume = () => {
         // Pointing directly to the file in the public folder
-        const fileUrl = "/Ashraful_Haq_Aamir_Resume.pdf"; 
+        const fileUrl = "https://res.cloudinary.com/bzd9kltc/image/upload/v1789039773/Ashraful_Haq_Aamir_Resume_v2_ojwgyt.pdf"; 
         
         const link = document.createElement("a");
         link.href = fileUrl;
