@@ -1,44 +1,54 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaEye } from 'react-icons/fa';
 
-// Replaced local imports with direct Cloudinary links in the array below
+import mernImage from '../assets/mern.png';
+import ragImage from '../assets/rag.png';
+import unstopImage from '../assets/unstop.png';
+import appwarsImage from '../assets/appwars.png';
+import skillcircleImage from '../assets/skillcircle.png';
 
 const certificateData = [
     {
         id: 1,
         title: "MERN Stack Development",
         issuer: "Microsoft & GNC",
-        image: "https://res.cloudinary.com/bzd9kltc/image/upload/v1785059835/mern_qedlgr.png", // Paste your Cloudinary URL here
+        image: mernImage,
     },
     {
         id: 2,
         title: "Intro to Retrieval Augmented Generation",
         issuer: "IBM SkillsBuild",
-        image: "https://res.cloudinary.com/bzd9kltc/image/upload/v1785059834/rag_aqyhga.png", // Paste your Cloudinary URL here
+        image: ragImage,
     },
     {
         id: 3,
         title: "Techinertia 3.0 Hackathon",
         issuer: "Unstop",
-        image: "https://res.cloudinary.com/bzd9kltc/image/upload/v1785059835/unstop_bpz0ek.png", // Paste your Cloudinary URL here
+        image: unstopImage,
     },
     {
         id: 4,
         title: "Data Science Seminar",
         issuer: "Appwars Technologies",
-        image: "https://res.cloudinary.com/bzd9kltc/image/upload/v1785059834/appwars_cdjpnv.png", // Paste your Cloudinary URL here
+        image: appwarsImage,
     },
     {
         id: 5,
         title: "Machine Learning using Python",
         issuer: "SkillCircle",
-        image: "https://res.cloudinary.com/bzd9kltc/image/upload/v1785059834/skillcircle_rkrwdz.png", // Paste your Cloudinary URL here
+        image: skillcircleImage,
     }
 ];
 
 const Certifications = () => {
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef(null);
+    const carouselRef = useRef(null);
+    const isDraggingRef = useRef(false);
+    const dragStartXRef = useRef(0);
+    const trackPositionRef = useRef(0);
+    const dragStartPositionRef = useRef(0);
+    const [isDragging, setIsDragging] = useState(false);
 
     // Scroll animation observer for the section header
     useEffect(() => {
@@ -60,8 +70,93 @@ const Certifications = () => {
         };
     }, []);
 
-    // Duplicate the array so the infinite scroll loops seamlessly
-    const duplicatedCertificates = [...certificateData, ...certificateData];
+    useEffect(() => {
+        let animationFrameId;
+        let lastTimestamp;
+
+        const moveCarousel = (timestamp) => {
+            if (lastTimestamp === undefined) lastTimestamp = timestamp;
+
+            const elapsed = timestamp - lastTimestamp;
+            lastTimestamp = timestamp;
+
+            if (!isDraggingRef.current && carouselRef.current) {
+                const track = carouselRef.current;
+                const loopWidth = track.scrollWidth / 4;
+
+                if (loopWidth <= 0) {
+                    animationFrameId = requestAnimationFrame(moveCarousel);
+                    return;
+                }
+
+                trackPositionRef.current -= elapsed * 0.035;
+
+                if (trackPositionRef.current <= -loopWidth) {
+                    trackPositionRef.current += loopWidth;
+                }
+
+                track.style.transform = `translate3d(${trackPositionRef.current}px, 0, 0)`;
+            }
+
+            animationFrameId = requestAnimationFrame(moveCarousel);
+        };
+
+        animationFrameId = requestAnimationFrame(moveCarousel);
+        return () => cancelAnimationFrame(animationFrameId);
+    }, []);
+
+    useEffect(() => {
+        const stopDragging = () => {
+            isDraggingRef.current = false;
+            setIsDragging(false);
+        };
+
+        window.addEventListener('pointerup', stopDragging);
+        window.addEventListener('pointercancel', stopDragging);
+
+        return () => {
+            window.removeEventListener('pointerup', stopDragging);
+            window.removeEventListener('pointercancel', stopDragging);
+        };
+    }, []);
+
+    const handlePointerDown = (event) => {
+        if (!carouselRef.current) return;
+
+        isDraggingRef.current = true;
+        setIsDragging(true);
+        dragStartXRef.current = event.clientX;
+        dragStartPositionRef.current = trackPositionRef.current;
+        carouselRef.current.setPointerCapture(event.pointerId);
+    };
+
+    const handlePointerMove = (event) => {
+        if (!isDraggingRef.current || !carouselRef.current) return;
+
+        event.preventDefault();
+        const distanceMoved = event.clientX - dragStartXRef.current;
+        trackPositionRef.current = dragStartPositionRef.current + distanceMoved;
+        carouselRef.current.style.transform = `translate3d(${trackPositionRef.current}px, 0, 0)`;
+    };
+
+    const handlePointerUp = (event) => {
+        if (!carouselRef.current) return;
+
+        isDraggingRef.current = false;
+        setIsDragging(false);
+
+        if (carouselRef.current.hasPointerCapture(event.pointerId)) {
+            carouselRef.current.releasePointerCapture(event.pointerId);
+        }
+    };
+
+    // Repeat the array enough times so wide screens never reach the scroll limit.
+    const duplicatedCertificates = [
+        ...certificateData,
+        ...certificateData,
+        ...certificateData,
+        ...certificateData
+    ];
 
     return (
         <section 
@@ -69,21 +164,11 @@ const Certifications = () => {
             ref={sectionRef}
             className="relative w-full py-24 bg-transparent text-gray-900 dark:text-white overflow-hidden scroll-mt-24 transition-colors duration-300"
         >
-            {/* Embedded CSS for the Infinite Marquee Animation */}
+            {/* Styling for the draggable certificate track */}
             <style>
                 {`
-                    @keyframes scrollX {
-                        0% { transform: translateX(0); }
-                        100% { transform: translateX(-50%); } 
-                    }
-                    .animate-marquee {
-                        display: flex;
-                        width: max-content;
-                        animation: scrollX 50s linear infinite; 
-                    }
-                    /* Pause animation when user hovers over the track */
-                    .animate-marquee:hover {
-                        animation-play-state: paused;
+                    .certificate-carousel::-webkit-scrollbar {
+                        display: none;
                     }
                 `}
             </style>
@@ -101,14 +186,23 @@ const Certifications = () => {
             </div>
 
             {/* Marquee Track Container (Full Width) */}
-            <div className="relative w-full overflow-hidden flex">
-                
+            <div className="relative w-full overflow-hidden">
                 {/* Fade Gradients on the left and right edges */}
                 <div className="absolute top-0 left-0 w-24 md:w-40 h-full bg-gradient-to-r from-white dark:from-[#050914] to-transparent z-10 pointer-events-none transition-colors duration-300"></div>
                 <div className="absolute top-0 right-0 w-24 md:w-40 h-full bg-gradient-to-l from-white dark:from-[#050914] to-transparent z-10 pointer-events-none transition-colors duration-300"></div>
 
-                {/* The Scrolling Element */}
-                <div className="animate-marquee py-6">
+                <div
+                    ref={carouselRef}
+                    className={`relative flex w-max select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+                    onPointerDown={handlePointerDown}
+                    onPointerMove={handlePointerMove}
+                    onPointerUp={handlePointerUp}
+                    onPointerCancel={handlePointerUp}
+                    onLostPointerCapture={handlePointerUp}
+                    style={{ touchAction: 'pan-y', willChange: 'transform' }}
+                >
+                    {/* The Scrolling Element */}
+                    <div className="flex w-max py-6">
                     {duplicatedCertificates.map((cert, index) => (
                         <div 
                             key={`${cert.id}-${index}`} 
@@ -127,11 +221,12 @@ const Certifications = () => {
                                     />
 
                                     {/* Hover Overlay with View Button */}
-                                    <div className="absolute inset-0 bg-white/80 dark:bg-[#050914]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm z-10">
+                                    <div className="absolute inset-0 bg-white/80 dark:bg-[#050914]/80 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm z-10">
                                         <a 
                                             href={cert.image} 
                                             target="_blank" 
                                             rel="noopener noreferrer"
+                                            onPointerDown={(event) => event.stopPropagation()}
                                             className="px-5 py-2.5 bg-[#38bdf8] text-gray-900 dark:text-[#050914] rounded-full font-bold text-sm flex items-center gap-2 hover:bg-blue-600 dark:hover:bg-white hover:text-white dark:hover:text-[#050914] transition-colors duration-300 hover:scale-105 transform shadow-[0_0_15px_rgba(56,189,248,0.4)]"
                                         >
                                             <FaEye className="text-base" /> View Full
@@ -151,7 +246,8 @@ const Certifications = () => {
 
                             </div>
                         </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

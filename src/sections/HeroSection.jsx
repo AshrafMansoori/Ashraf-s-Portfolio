@@ -85,24 +85,22 @@ const HeroSection = () => {
     }, [currentText, isDeleting, phraseIndex]);
 
     const handleDownloadResume = () => {
-    const fileUrl =
-        "https://res.cloudinary.com/bzd9kltc/image/upload/fl_attachment/Ashraful_Haq_Aamir_Resume_v2_ojwgyt.pdf";
+        const fileUrl =
+            "https://res.cloudinary.com/ash-cloudi/image/upload/fl_attachment/Ashraful_Haq_Aamir_Resume_v2_ojwgyt.pdf";
 
-    const link = document.createElement("a");
-    link.href = fileUrl;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
+        const link = document.createElement("a");
+        link.href = fileUrl;
+        link.download = "Ashraful_Haq_Aamir_Resume.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
 
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+        setDownloaded(true);
 
-    setDownloaded(true);
-
-    setTimeout(() => {
-        setDownloaded(false);
-    }, 2000);
-};
+        setTimeout(() => {
+            setDownloaded(false);
+        }, 2000);
+    };
 
     // Helper function for staggered fade-up animations
     const fadeUp = (delayClass) => 

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { BsDownload } from 'react-icons/bs';
+import { FaBars, FaTimes, FaEye } from 'react-icons/fa';
 import ThemeToggle from './Theme';
 
 const Navbar = () => {
@@ -145,7 +144,7 @@ const Navbar = () => {
 
                             {/* ANIMATED DESKTOP RESUME BUTTON */}
                             <a 
-                                href="https://res.cloudinary.com/bzd9kltc/image/upload/v1789039773/Ashraful_Haq_Aamir_Resume_v2_ojwgyt.pdf"
+                                href="https://res.cloudinary.com/ash-cloudi/image/upload/v1789039773/Ashraful_Haq_Aamir_Resume_v2_ojwgyt.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={`relative overflow-hidden flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-[#38bdf8] to-[#2563eb] rounded-full text-sm font-semibold text-white group transition-all duration-200 ease-out hover:scale-105 hover:shadow-[0_0_20px_rgba(56,189,248,0.5)] active:scale-95 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2'}`}
@@ -154,7 +153,7 @@ const Navbar = () => {
                                 {/* Fast Shine Effect */}
                                 <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-300 ease-out"></span>
                                 
-                                <BsDownload className="text-lg relative z-10" />
+                                <FaEye className="text-lg relative z-10" />
                                 <span className="relative z-10">View Resume</span>
                             </a>
                         </div>
@@ -219,7 +218,7 @@ const Navbar = () => {
                             {/* Fast Shine Effect */}
                             <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full active:translate-x-full transition-transform duration-300 ease-out"></span>
                             
-                            <BsDownload className="text-xl relative z-10" />
+                            <FaEye className="text-xl relative z-10" />
                             <span className="relative z-10">View Resume</span>
                         </a>
                     </li>
