@@ -293,7 +293,7 @@ const HeroSection = () => {
                             <div className="h-full flex flex-col items-center justify-center p-6 rounded-2xl bg-white/60 dark:bg-[#0c162d]/60 backdrop-blur-md border border-gray-200 dark:border-[#1e2d4a] hover:border-[#f89f1b]/60 dark:hover:border-[#f89f1b]/60 hover:bg-white/90 dark:hover:bg-[#0c162d]/90 transition-all duration-300 hover:-translate-y-3 hover:scale-105 hover:shadow-[0_0_30px_rgba(248,159,27,0.15)] shadow-lg group cursor-pointer">
                                 <SiLeetcode className="text-4xl text-gray-400 dark:text-gray-400 group-hover:text-[#f89f1b] mb-4 transition-colors duration-300 group-hover:scale-110 transform" />
                                 <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-1 group-hover:text-[#f89f1b] transition-colors duration-300">
-                                    {isMounted ? <AnimatedCounter end={190} duration={2500} /> : "0+"}
+                                    {isMounted ? <AnimatedCounter end={250} duration={2500} /> : "0+"}
                                 </h3>
                                 <p className="text-sm font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-300 transition-colors duration-300">LeetCode Solved</p>
                             </div>
