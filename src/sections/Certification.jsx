@@ -49,6 +49,7 @@ const Certifications = () => {
     const trackPositionRef = useRef(0);
     const dragStartPositionRef = useRef(0);
     const [isDragging, setIsDragging] = useState(false);
+    const [selectedCertificate, setSelectedCertificate] = useState(null);
 
     // Scroll animation observer for the section header
     useEffect(() => {
@@ -118,6 +119,15 @@ const Certifications = () => {
             window.removeEventListener('pointerup', stopDragging);
             window.removeEventListener('pointercancel', stopDragging);
         };
+    }, []);
+
+    useEffect(() => {
+        const closePreview = (event) => {
+            if (event.key === 'Escape') setSelectedCertificate(null);
+        };
+
+        window.addEventListener('keydown', closePreview);
+        return () => window.removeEventListener('keydown', closePreview);
     }, []);
 
     const handlePointerDown = (event) => {
@@ -222,15 +232,14 @@ const Certifications = () => {
 
                                     {/* Hover Overlay with View Button */}
                                     <div className="absolute inset-0 bg-white/80 dark:bg-[#050914]/80 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm z-10">
-                                        <a 
-                                            href={cert.image} 
-                                            target="_blank" 
-                                            rel="noopener noreferrer"
+                                        <button
+                                            type="button"
+                                            onClick={() => setSelectedCertificate(cert)}
                                             onPointerDown={(event) => event.stopPropagation()}
                                             className="px-5 py-2.5 bg-[#38bdf8] text-gray-900 dark:text-[#050914] rounded-full font-bold text-sm flex items-center gap-2 hover:bg-blue-600 dark:hover:bg-white hover:text-white dark:hover:text-[#050914] transition-colors duration-300 hover:scale-105 transform shadow-[0_0_15px_rgba(56,189,248,0.4)]"
                                         >
                                             <FaEye className="text-base" /> View Full
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
 
@@ -250,6 +259,35 @@ const Certifications = () => {
                     </div>
                 </div>
             </div>
+
+            {selectedCertificate && (
+                <div
+                    className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+                    onClick={() => setSelectedCertificate(null)}
+                >
+                    <div
+                        className="relative flex max-h-[90vh] max-w-5xl flex-col items-center rounded-2xl bg-white p-3 shadow-2xl dark:bg-[#0c162d]"
+                        onClick={(event) => event.stopPropagation()}
+                    >
+                        <button
+                            type="button"
+                            aria-label="Close certificate preview"
+                            onClick={() => setSelectedCertificate(null)}
+                            className="absolute right-4 top-4 z-10 rounded-full bg-black/70 px-3 py-1 text-2xl leading-none text-white hover:bg-black"
+                        >
+                            &times;
+                        </button>
+                        <img
+                            src={selectedCertificate.image}
+                            alt={selectedCertificate.title}
+                            className="max-h-[82vh] max-w-full rounded-xl object-contain"
+                        />
+                        <p className="px-2 pb-1 pt-3 text-center font-semibold text-gray-900 dark:text-white">
+                            {selectedCertificate.title}
+                        </p>
+                    </div>
+                </div>
+            )}
         </section>
     );
 };
